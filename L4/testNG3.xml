@@ -1,0 +1,29 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test Suite 3">
+    <test name="Positive and Negative Int Test Sort">
+        <groups>
+            <run>
+                <include name="positive"/>
+                <include name="negative"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="org.example.SortTestPositive">
+                <methods>
+                    <include name="testInsertionSort"/>
+                    <include name="testCombSort"/>
+                    <include name="testSelectionSort"/>
+                    <include name="testQuickHoareSort"/>
+                </methods>
+            </class>
+            <class name="org.example.SortTestNegative">
+                <methods>
+                    <include name="testInsertionSort"/>
+                    <include name="testCombSort"/>
+                    <include name="testSelectionSort"/>
+                    <include name="testQuickHoareSort"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
