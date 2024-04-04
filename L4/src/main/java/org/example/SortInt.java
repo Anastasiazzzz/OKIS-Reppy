@@ -3,7 +3,7 @@ package org.example;
 public class SortInt {
 
     // сортировка Вставками
-    public void InsertionSort(int arr[]) {
+    public void insertionSort(int arr[]) {
         for (int i = 1; i < arr.length; i++) {
             int sorted = i - 1;
             while (sorted > -1 && arr[sorted] > arr[sorted + 1]) {
@@ -17,7 +17,7 @@ public class SortInt {
 
 
     // сортировка Расческой
-    public void CombSort (int arr[]) {
+    public void combSort(int arr[]) {
         int gap = arr.length;
 
         boolean isSorted = false;
@@ -44,7 +44,7 @@ public class SortInt {
 
 
     // сортировка Выбором
-    public void SelectionSort(int arr[]) {
+    public void selectionSort(int arr[]) {
         for (int i = 0; i < arr.length; i++) {
             int min_index = i;
             for (int j = i + 1; j < arr.length; j++) {
@@ -62,7 +62,7 @@ public class SortInt {
 
 
     // Быстрая сортировка (Хоара)
-    public int HoareSort(int arr[], int left, int right) {
+    public int hoareSort(int arr[], int left, int right) {
         int pivot = arr[(left+right) / 2]; // обозначаем опорный элемент (середина массива)
 
         while (left <= right) {
@@ -89,13 +89,17 @@ public class SortInt {
             return;
         }
 
-        int rightStart = HoareSort(arr, start, end);
+        int rightStart = hoareSort(arr, start, end);
         quickHoareSort(arr, start, rightStart-1);
         quickHoareSort(arr, rightStart, end);
     }
 
     void quickHoareSort(int arr[]) {
         quickHoareSort(arr, 0, arr.length - 1);
+    }
+
+    public static void main(String[] args) {
+        System.out.println();
     }
 }
 

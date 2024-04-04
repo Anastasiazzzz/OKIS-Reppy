@@ -2,7 +2,7 @@ package org.example;
 
 public class SortDouble {
 
-    public void InsertionSortDouble(double arr[]) {
+    public void insertionSortDouble(double arr[]) {
         for (int i = 1; i < arr.length; i++) {
             int sorted = i - 1;
             while (sorted > -1 && arr[sorted] > arr[sorted + 1]) {
@@ -15,7 +15,7 @@ public class SortDouble {
     }
 
 
-    public void CombSortDouble (double arr[]) {
+    public void combSortDouble(double arr[]) {
         int gap = arr.length;
 
         boolean isSorted = false;
@@ -41,7 +41,7 @@ public class SortDouble {
     }
 
 
-    public void SelectionSortDouble(double arr[]) {
+    public void selectionSortDouble(double arr[]) {
         for (int i = 0; i < arr.length; i++) {
             int min_index = i;
             for (int j = i + 1; j < arr.length; j++) {
@@ -58,7 +58,7 @@ public class SortDouble {
     }
 
 
-    public int HoareSortDouble(double arr[], int left, int right) {
+    public int hoareSortDouble(double arr[], int left, int right) {
         double pivot = arr[(left+right) / 2]; // обозначаем опорный элемент (середина массива)
 
         while (left <= right) {
@@ -86,7 +86,7 @@ public class SortDouble {
             return;
         }
 
-        int rightStart = HoareSortDouble(arr, start, end);
+        int rightStart = hoareSortDouble(arr, start, end);
         quickHoareSortDouble(arr, start, rightStart-1);
         quickHoareSortDouble(arr, rightStart, end);
     }
