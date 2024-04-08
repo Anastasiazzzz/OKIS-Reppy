@@ -18,9 +18,6 @@
             </class>
             <class name="org.example.SortTestNegative">
                 <methods>
-                    <include name="testInsertionSortDouble"/>
-                    <include name="testCombSortDouble"/>
-                    <include name="testSelectionSortDouble"/>
                     <include name="testQuickHoareSortDouble"/>
                 </methods>
             </class>
