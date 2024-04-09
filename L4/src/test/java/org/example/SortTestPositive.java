@@ -40,13 +40,16 @@ public class SortTestPositive {
 
     @Test(groups = "positive")
     void testQuickHoareSort() {
+
+        // Arrange
         SortInt sort = new SortInt();
-
         int Arr[] = {1, 15, 2, 61, 8, 70};
+        int expectedArr[] = {1, 2, 8, 15, 61, 70};
 
+        //Act
         sort.quickHoareSort(Arr);
 
-        int expectedArr[] = {1, 2, 8, 15, 61, 70};
+        // Accert
         Assert.assertEquals(expectedArr, Arr);
     }
 
@@ -86,12 +89,11 @@ public class SortTestPositive {
     @Test(groups = "positive")
     void testQuickHoareSortDouble() {
         SortDouble sort = new SortDouble();
-
         double Arr[] = {1.15, 15.8, 2, 61.9, 8.71, 70.5};
+        double expectedArr[] = {1.15, 2, 8.71, 15.8, 61.9, 70.5};
 
         sort.quickHoareSortDouble(Arr);
 
-        double expectedArr[] = {1.15, 2, 8.71, 15.8, 61.9, 70.5};
         Assert.assertEquals(expectedArr, Arr);
     }
 }

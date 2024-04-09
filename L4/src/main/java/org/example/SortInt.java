@@ -85,6 +85,7 @@ public class SortInt {
     }
 
     void quickHoareSort(int arr[], int start, int end) {
+
         if (start >= end) {
             return;
         }
