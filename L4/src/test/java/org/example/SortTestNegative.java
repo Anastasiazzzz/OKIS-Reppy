@@ -7,12 +7,16 @@ public class SortTestNegative {
 
     @Test(groups = "negative")
     void testQuickHoareSort() {
+
+        // Arrange
         SortInt sort = new SortInt();
         int Arr[] = {1, 15, 2, 61, 8, 70};
         int expectedArr[] = {1, 15, 2, 61, 8, 70};
 
+        //Act
         sort.hoareSort(Arr, Arr.length, Arr.length - 1);
 
+        // Accert
         Assert.assertEquals(expectedArr, Arr);
     }
 
