@@ -22,50 +22,50 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class Chrome {
 
     public static void main(String[] args) {
-        //System.setProperty("webdriver.chrome.driver", "C:\\Users\\в\\Desktop\\chromedriver-win32\\chromedriver-win32\\chromedriver-win64\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\в\\Desktop\\chromedriver-win32\\chromedriver-win32\\chromedriver-win64\\chromedriver.exe");
 
         // объявление драйвера
         WebDriver driver = new ChromeDriver();
 
         // неявное ожидание
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
         // открытие главной страницы
         driver.get("https://testng.org/");
 
-        // получение заголовка сайта
-        String title = driver.getTitle();
+        // явное ожидание
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-        System.out.println("\nЗаголовок сайта: " + title + "\n");
+        // получение заголовка сайта и его вывод
+        WebElement title = wait.until(ExpectedConditions.presenceOfElementLocated(By.
+                xpath("//h1[text()=\"TestNG Documentation\"]")));
 
-        // поиск элементов
+        System.out.println("Title:\n" + title.getText() + "\n");
+
+        // поиск элементов и их вывод
         List<WebElement> elements = driver.findElements(By.cssSelector(".toc-link.node-name--H2." +
                 "ignoreactive,.toc-link.node-name--H3,.toc-link.node-name--H4,.toc-link.node-name--H2," +
                 ".toc-link.node-name--H5 "));
 
+        System.out.println("Elements:");
         for (int i = 0; i < elements.size(); i++) {
             System.out.println(elements.get(i).getAttribute("text"));
         }
 
         // поиск по тексту с конкретным значением
-        /*WebElement firstElement = driver.findElement(By.
-                xpath("//a[text()='1.2. Mailing-lists']"));
+        WebElement firstElement = driver.findElement(By.
+                xpath("//a[text()='5. YAML']"));
         firstElement.click();
 
         WebElement secondElement = driver.findElement(By.
-                cssSelector("li.toc-list-item > a[href=\"#_dependencies\"]"));
-        secondElement.click();*/
+                cssSelector("li.toc-list-item > a[href=\"#_dry_run_for_your_tests\"]"));
+        secondElement.click();
 
         // закрытие браузера
-
-        // явное ожидание (10 секунд)
-        //WebDriverWait wait = new WebDriverWait(driver, 7);
-
         driver.quit();
     }
 }
