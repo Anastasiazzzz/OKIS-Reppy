@@ -11,8 +11,6 @@
    Не использовать в локаторах абсолютные пути до элемента.
  */
 
-package org.example;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -44,19 +42,19 @@ public class Chrome {
         WebElement title = wait.until(ExpectedConditions.presenceOfElementLocated(By.
                 xpath("//h1[text()=\"TestNG Documentation\"]")));
 
-        System.out.println("Title:\n" + title.getText() + "\n");
+        System.out.println("\nSite title:\n" + title.getText() + "\n");
 
         // поиск элементов и их вывод
         List<WebElement> elements = driver.findElements(By.cssSelector(".toc-link.node-name--H2." +
                 "ignoreactive,.toc-link.node-name--H3,.toc-link.node-name--H4,.toc-link.node-name--H2," +
-                ".toc-link.node-name--H5 "));
+                ".toc-link.node-name--H5"));
 
         System.out.println("Elements:");
         for (int i = 0; i < elements.size(); i++) {
             System.out.println(elements.get(i).getAttribute("text"));
         }
 
-        // поиск по тексту с конкретным значением
+        // поиск с конкретным значением и переход по элементу
         WebElement firstElement = driver.findElement(By.
                 xpath("//a[text()='5. YAML']"));
         firstElement.click();
