@@ -2,8 +2,8 @@ package org.baseTest;
 
 import org.common.CommonAction;
 import org.openqa.selenium.JavascriptExecutor;
-import org.page.BasePage;
-import org.page.MainPage;
+import org.pages.BasePage;
+import org.pages.MainPage;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 

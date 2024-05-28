@@ -1,4 +1,4 @@
-package org.page;
+package org.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;

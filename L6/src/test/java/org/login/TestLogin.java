@@ -1,7 +1,7 @@
 package org.login;
 
 import org.baseTest.BaseTest;
-import org.page.MainPage;
+import org.pages.MainPage;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
