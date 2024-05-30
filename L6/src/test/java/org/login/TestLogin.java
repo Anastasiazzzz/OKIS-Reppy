@@ -1,7 +1,7 @@
 package org.login;
 
 import org.baseTest.BaseTest;
-import org.pages.MainPage;
+import org.pages.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -15,7 +15,7 @@ public class TestLogin extends BaseTest {
     }
 
     @Test (groups = "login", dataProvider = "userData")
-    void loginPositive(String username, String password) throws MainPage.AuthenticationException {
+    void loginPositive(String username, String password) throws HomePage.AuthenticationException {
         String expectedResult = "Kulich";
 
         String actualResult = MainPage.loginUser(username, password).getProfileName();
@@ -28,20 +28,20 @@ public class TestLogin extends BaseTest {
         return new StringBuilder(str).reverse().toString();
     }
 
-    @Test (groups = "login", dataProvider = "userData", expectedExceptions = {MainPage.AuthenticationException.class})
-    void loginNegativeIncorrectUsername (String username, String password) throws MainPage.AuthenticationException {
+    @Test (groups = "login", dataProvider = "userData", expectedExceptions = {HomePage.AuthenticationException.class})
+    void loginNegativeIncorrectUsername (String username, String password) throws HomePage.AuthenticationException {
         String incorrectUsername = reverseString(username);
         MainPage.loginUser(incorrectUsername, password);
     }
 
-    @Test (groups = "login", dataProvider = "userData", expectedExceptions = {MainPage.AuthenticationException.class})
-    void loginNegativeIncorrectPassword (String username, String password) throws MainPage.AuthenticationException {
+    @Test (groups = "login", dataProvider = "userData", expectedExceptions = {HomePage.AuthenticationException.class})
+    void loginNegativeIncorrectPassword (String username, String password) throws HomePage.AuthenticationException {
         String incorrectPassword = reverseString(password);
         MainPage.loginUser(username, incorrectPassword);
     }
 
-    @Test (groups = "login", dataProvider = "userData", expectedExceptions = {MainPage.AuthenticationException.class})
-    void exit(String username, String password) throws MainPage.AuthenticationException {
+    @Test (groups = "login", dataProvider = "userData", expectedExceptions = {HomePage.AuthenticationException.class})
+    void exit(String username, String password) throws HomePage.AuthenticationException {
         MainPage.exit();
     }
 }

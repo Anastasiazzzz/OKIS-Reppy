@@ -12,8 +12,8 @@ import java.util.List;
 
 import static org.constants.Constants.ExpectationVariable.*;
 
-public class MainPage extends BasePage {
-    public MainPage(WebDriver driver) {
+public class HomePage extends BasePage {
+    public HomePage(WebDriver driver) {
         super(driver);
     }
 
@@ -26,7 +26,7 @@ public class MainPage extends BasePage {
     private final By inputPassBy = By.cssSelector("input#login-passwd.text-input");
     private final By buttonLoginBy = By.xpath("//button[@value='Войти']");
 
-    public MainPage loginUser(String username, String password) throws AuthenticationException {
+    public HomePage loginUser(String username, String password) throws AuthenticationException {
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(loginInBy)).click();
         // changeFrame(iFrameLogInBy);
@@ -37,7 +37,7 @@ public class MainPage extends BasePage {
 
         incorrectLogin();
 
-        return new MainPage(driver);
+        return new HomePage(driver);
     }
 
     // получение имени пользователя
@@ -52,21 +52,21 @@ public class MainPage extends BasePage {
     // вход с неверными данными
     private final By incorrectLoginBy = By.xpath("//div[@class='_error'][@style='display: block;']");
 
-    private MainPage incorrectLogin() throws AuthenticationException {
+    private HomePage incorrectLogin() throws AuthenticationException {
         try {
             if (wait.until(ExpectedConditions.presenceOfElementLocated(incorrectLoginBy)).isDisplayed()) {
                 throw new AuthenticationException("Неверный логин или пароль");
             }
         } catch (TimeoutException e) {}
 
-        return new MainPage(driver);
+        return new HomePage(driver);
     }
 
     // выход из аккаунта
     private final By userIconBy = By.xpath("//a[@class='user-toggle ']");
     private final By buttonExitBy = By.xpath("//a[@href='/?logout=yes']");
 
-    public MainPage exit() throws AuthenticationException {
+    public HomePage exit() throws AuthenticationException {
         try {
             wait.until(ExpectedConditions.visibilityOfElementLocated(userIconBy)).click();
             wait.until(ExpectedConditions.visibilityOfElementLocated(buttonExitBy)).click();
@@ -74,7 +74,7 @@ public class MainPage extends BasePage {
             throw new AuthenticationException("Вход в аккаунт не выполнен");
         }
 
-        return new MainPage(driver);
+        return new HomePage(driver);
     }
 
     public static class AuthenticationException extends Exception {
@@ -122,13 +122,13 @@ public class MainPage extends BasePage {
     private final By searchButtonBy = By.cssSelector("button.search-button");
     private final By searchResultBy = By.xpath("//a[@href='/brand/miko/'][b]");
 
-    public MainPage searchProduct(String request) {
+    public HomePage searchProduct(String request) {
 
         wait.until(ExpectedConditions.visibilityOfElementLocated(searchMenuBy)).click();
         driver.findElement(searchInputBy).sendKeys(request);
         wait.until(ExpectedConditions.visibilityOfElementLocated(searchButtonBy)).click();
 
-        return new MainPage(driver);
+        return new HomePage(driver);
     }
 
     // получение результата с верным названием

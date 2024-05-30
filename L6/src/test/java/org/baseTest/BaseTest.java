@@ -3,7 +3,7 @@ package org.baseTest;
 import org.common.CommonAction;
 import org.openqa.selenium.JavascriptExecutor;
 import org.pages.BasePage;
-import org.pages.MainPage;
+import org.pages.HomePage;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
@@ -13,13 +13,13 @@ import static org.common.Config.*;
 public class BaseTest {
     protected WebDriver driver;
     protected BasePage BasePage;
-    protected MainPage MainPage;
+    protected HomePage MainPage;
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
         driver = CommonAction.createDriver();
         BasePage = new BasePage(driver);
-        MainPage = new MainPage(driver);
+        MainPage = new HomePage(driver);
 
         BasePage.open(URL);
     }
